@@ -1,0 +1,13 @@
+<body>
+    <h1>hello from messages</h1>
+    <a href="/new">Add message</a>
+    <%for( let i=0; i< message.length;i++){%>
+        <%let id= i%>
+        <ul>
+            <li><%=message[i].text%></li>
+            <li><%=message[i].user%></li>
+            <li><%=message[i].added%></li>
+        </ul>
+        <a href="new/<%=id %>">test me</a>
+    <%}%>
+</body>
