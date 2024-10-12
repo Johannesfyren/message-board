@@ -1,20 +1,15 @@
 const {Router} = require('express')
 const messageRouter = Router();
 
-const {messages} = require('./indexRouter')
+const messageController = require('../controllers/messageController')
 
 messageRouter.get('/', (req, res) => {
     res.render('form');
 })
 
-messageRouter.post('/', (req, res) => {
+messageRouter.post('/', messageController.postMessage);
     
-    messages.push({ text: req.body.text, user: req.body.name, added: new Date() });
-    res.redirect("/")
-})
 
-messageRouter.get('/:messageID', (req, res) => {
-    res.render('singleMess', {id: req.params.messageID, message:messages});
-})
+messageRouter.get('/:messageID', messageController.getSingleMessage)
 
 module.exports = messageRouter;

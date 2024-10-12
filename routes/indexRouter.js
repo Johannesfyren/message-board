@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const indexRouter = Router();
+const messageController = require("../controllers/messageController")
 const messages = [
     {
       text: "Hi there!",
@@ -15,9 +16,7 @@ const messages = [
 
 
 
-indexRouter.get('/', (req, res) => {
-    res.render(('messages'), {message: messages})
-})
+indexRouter.get('/', messageController.getMessages);
 
 
 
